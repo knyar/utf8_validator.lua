@@ -106,6 +106,13 @@ function utf8_validator.validate2(str)
   return true
 end
 
+function utf8_validator.ascii_only(str)
+  if str:find("[\128-\255]") then
+    return false
+  else
+    return true
+  end
+end
 
 setmetatable(utf8_validator, {__call = function(_, ...) return utf8_validator.validate(...) end})
 
